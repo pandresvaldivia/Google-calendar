@@ -7,3 +7,4 @@ import '../styles/calendar.css';
 import '../styles/calendar-day.css';
 import '../styles/timezone-cell.css';
 import '../styles/hour-cell.css';
+import '../styles/current-time.css';
