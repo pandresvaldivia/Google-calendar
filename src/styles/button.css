@@ -40,6 +40,7 @@
 }
 
 .button.is-secondary {
+	padding-inline: 0.75rem;
 	border: 1px solid var(--gray20);
 }
 

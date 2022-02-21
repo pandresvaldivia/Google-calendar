@@ -9,3 +9,4 @@ import '../styles/timezone-cell.css';
 import '../styles/hour-cell.css';
 import '../styles/current-time.css';
 import '../styles/button.css';
+import '../styles/select.css';
