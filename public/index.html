@@ -87,6 +87,38 @@
 	<body class="body">
 		<div class="page">
 			<header class="header">
+				<button class="button is-compact">
+					<i class="icon-hamburguerButton" aria-hidden="true"></i>
+				</button>
+				<a href="./index.html" aria-current="page" aria-label="Google calendar">
+					<img
+						src="./assets/images/logo.png"
+						alt="Logo de Google Calendar"
+						tabindex="-1"
+					/>
+				</a>
+				<div class="calendarStatus">
+					<button class="button is-secondary">
+						<time datetime="20-02-2022">Hoy</time>
+					</button>
+					<div class="calendarStatus-navigation">
+						<button
+							class="button is-compact"
+							aria-label="Semana anterior"
+							title="Semana anterior"
+						>
+							<i class="icon-chevron-left" aria-hidden="true"></i>
+						</button>
+						<button
+							class="button is-compact"
+							aria-label="Semana siguiente"
+							title="Semana siguiente"
+						>
+							<i class="icon-chevron-right" aria-hidden="true"></i>
+						</button>
+					</div>
+					<time class="calendarStatus-date">20 de Febrero</time>
+				</div>
 				<select class="select" name="" id="">
 					<option value="">Día</option>
 					<option value="" selected>Semana</option>

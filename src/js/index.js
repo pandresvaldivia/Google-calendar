@@ -10,3 +10,4 @@ import '../styles/hour-cell.css';
 import '../styles/current-time.css';
 import '../styles/button.css';
 import '../styles/select.css';
+import '../styles/calendar-status.css';
