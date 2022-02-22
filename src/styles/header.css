@@ -1,0 +1,19 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 1rem 1.5rem;
+}
+
+.header-block {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+
+.header-primary {
+}
+
+.header-logo img {
+	vertical-align: middle;
+}
