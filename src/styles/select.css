@@ -11,7 +11,7 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: url(../assets/icons/down.png) no-repeat right center;
+	background: url(../assets/icons/down.svg) no-repeat right center;
 	background-position: right 0.75rem center;
 	outline: none;
 	cursor: pointer;

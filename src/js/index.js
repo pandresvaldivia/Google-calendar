@@ -14,3 +14,4 @@ import '../styles/calendar-status.css';
 import '../styles/header.css';
 import '../styles/profile.css';
 import '../styles/mini-calendar.css';
+import '../styles/search.css';
