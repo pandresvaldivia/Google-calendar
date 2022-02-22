@@ -1,0 +1,16 @@
+.profile {
+	inline-size: 2rem;
+	block-size: 2rem;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile-image {
+	inline-size: 100%;
+	block-size: auto;
+	vertical-align: middle;
+}

@@ -12,3 +12,4 @@ import '../styles/button.css';
 import '../styles/select.css';
 import '../styles/calendar-status.css';
 import '../styles/header.css';
+import '../styles/profile.css';
