@@ -15,3 +15,11 @@ import '../styles/header.css';
 import '../styles/profile.css';
 import '../styles/mini-calendar.css';
 import '../styles/search.css';
+
+import { $searchInputs } from './selectors.js';
+import { standOutInput } from './search.js';
+
+for (const $search of $searchInputs) {
+	$search.addEventListener('focus', standOutInput);
+	$search.addEventListener('focusout', standOutInput);
+}
