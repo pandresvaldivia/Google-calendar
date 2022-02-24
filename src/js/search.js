@@ -1,3 +1,5 @@
+import { getUsers } from './services/random-user.js';
+
 function standOutInput(e) {
 	const $searchInput = e.target;
 
