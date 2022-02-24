@@ -5,15 +5,18 @@ export default class Search {
 		this.container = $container;
 		this.input = this.container.querySelector('.search-input');
 		this.options = this.container.querySelector('.searchResult-list');
+		this.optionsList = [];
 
 		this.input.addEventListener('focus', () => this.standOutInput());
 		this.input.addEventListener('focusout', () => this.standOutInput());
+		this.input.addEventListener('input', (e) =>
+			this.filterOptions(e.target.value)
+		);
 
 		this.addOptions();
 	}
 
 	standOutInput() {
-		console.log(this.input);
 		this.input === document.activeElement
 			? this.container.classList.add('is-focused')
 			: this.container.classList.remove('is-focused');
@@ -59,7 +62,31 @@ export default class Search {
 		for (const userData of results) {
 			const $option = this.createOption(userData);
 
+			this.optionsList.push($option);
+		}
+
+		this.printOptions(this.optionsList);
+	}
+
+	printOptions(optionsList) {
+		this.clear();
+
+		for (const $option of optionsList) {
 			this.options.appendChild($option);
+		}
+	}
+
+	filterOptions(searchInput) {
+		const results = this.optionsList.filter((option) =>
+			option.innerText.toLowerCase().includes(searchInput.toLowerCase())
+		);
+
+		this.printOptions(results);
+	}
+
+	clear() {
+		while (this.options.firstElementChild) {
+			this.options.firstElementChild.remove();
 		}
 	}
 }
