@@ -15,6 +15,7 @@ import '../styles/header.css';
 import '../styles/profile.css';
 import '../styles/mini-calendar.css';
 import '../styles/search.css';
+import '../styles/search-result.css';
 
 import { $searchInputs } from './selectors.js';
 import { standOutInput } from './search.js';
