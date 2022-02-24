@@ -4,9 +4,9 @@ async function getUsers(numberOfUsers = 5) {
 			`https://randomuser.me/api/?results=${numberOfUsers}`
 		);
 
-		const users = await res.json();
+		const { results } = await res.json();
 
-		return { users, error: false };
+		return { results, error: false };
 	} catch (error) {
 		return { error: 'Something has gone wrong' };
 	}

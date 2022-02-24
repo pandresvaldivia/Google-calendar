@@ -17,10 +17,7 @@ import '../styles/mini-calendar.css';
 import '../styles/search.css';
 import '../styles/search-result.css';
 
-import { $searchInputs } from './selectors.js';
-import { standOutInput } from './search.js';
+import { $searchPeople } from './selectors.js';
+import Search from './search.js';
 
-for (const $search of $searchInputs) {
-	$search.addEventListener('focus', standOutInput);
-	$search.addEventListener('focusout', standOutInput);
-}
+const search = new Search($searchPeople);
