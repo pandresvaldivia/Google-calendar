@@ -16,6 +16,8 @@ import '../styles/profile.css';
 import '../styles/mini-calendar.css';
 import '../styles/search.css';
 import '../styles/search-result.css';
+import '../styles/events-filter.css';
+import '../styles/checkbox.css';
 
 import { $searchPeople } from './selectors.js';
 import Search from './search.js';

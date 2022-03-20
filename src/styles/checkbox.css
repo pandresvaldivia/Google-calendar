@@ -1,0 +1,73 @@
+.checkbox-container {
+	cursor: pointer;
+	position: relative;
+	padding-inline-start: 1.75rem;
+}
+
+.checkbox {
+	position: absolute;
+	cursor: pointer;
+	block-size: 0;
+	inline-size: 0;
+}
+
+.checkbox-marker {
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 0.25rem;
+	block-size: 1rem;
+	inline-size: 1rem;
+	border-radius: 0.25rem;
+}
+
+.checkbox-marker.is-blue {
+	border: 0.125rem solid var(--blue10);
+}
+
+.checkbox-marker.is-green {
+	border: 0.125rem solid var(--green10);
+}
+
+.checkbox-marker.is-orange {
+	border: 0.125rem solid var(--orange);
+}
+
+.checkbox-marker.is-purple {
+	border: 0.125rem solid var(--purple);
+}
+
+.checkbox:checked ~ .checkbox-marker.is-blue {
+	background: var(--blue10);
+}
+
+.checkbox:checked ~ .checkbox-marker.is-green {
+	background: var(--green10);
+}
+
+.checkbox:checked ~ .checkbox-marker.is-orange {
+	background: var(--orange);
+}
+
+.checkbox:checked ~ .checkbox-marker.is-purple {
+	background: var(--purple);
+}
+
+.checkbox-marker:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.checkbox:checked ~ .checkbox-marker:after {
+	display: block;
+}
+
+.checkbox-marker:after {
+	left: 0.3rem;
+	top: 0.125rem;
+	inline-size: 0.25rem;
+	block-size: 0.5rem;
+	border: solid var(--white);
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+}
