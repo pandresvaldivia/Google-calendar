@@ -1,0 +1,39 @@
+.eventsFilter {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	&-header {
+		font: var(--body1-medium);
+		list-style-type: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-block: 0.125rem;
+		padding-inline: 0.25rem;
+		border-radius: 0.25rem;
+		transition: background-color 100ms linear;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--gray10);
+		}
+
+		i {
+			font-size: 1.25rem;
+			transition: transform 0.2s;
+		}
+	}
+
+	&-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding-block-start: 0.5rem;
+	}
+
+	&[open] > &-header i {
+		transform: rotate(180deg);
+	}
+}

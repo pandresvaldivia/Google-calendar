@@ -1,0 +1,38 @@
+.filter {
+	cursor: pointer;
+	position: relative;
+	padding-inline-start: 1.75rem;
+
+	&-input {
+		position: absolute;
+		cursor: pointer;
+		block-size: 0;
+		inline-size: 0;
+	}
+
+	&-input:checked ~ .marker {
+		&:after {
+			display: block;
+		}
+
+		&.is-blue {
+			background: var(--blue10);
+		}
+
+		&.is-green {
+			background: var(--green10);
+		}
+
+		&.is-orange {
+			background: var(--orange);
+		}
+
+		&.is-purple {
+			background: var(--purple);
+		}
+
+		&:after {
+			display: block;
+		}
+	}
+}
