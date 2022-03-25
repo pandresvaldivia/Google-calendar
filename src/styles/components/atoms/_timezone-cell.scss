@@ -9,14 +9,14 @@
 	align-items: flex-end;
 	padding-inline-end: 0.625rem;
 	padding-block-end: 0.625rem;
-}
 
-.timezoneCell::before {
-	content: '';
-	inline-size: 6px;
-	block-size: 1px;
-	background: currentColor;
-	position: absolute;
-	inset-inline-end: 0;
-	inset-block-end: 0;
+	&::before {
+		content: '';
+		inline-size: 6px;
+		block-size: 1px;
+		background: currentColor;
+		position: absolute;
+		inset-inline-end: 0;
+		inset-block-end: 0;
+	}
 }

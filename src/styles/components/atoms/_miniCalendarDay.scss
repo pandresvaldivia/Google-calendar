@@ -1,0 +1,25 @@
+.miniCalendarDay {
+	display: grid;
+	place-content: center;
+	cursor: pointer;
+	padding: 0.25rem;
+	border-radius: 50%;
+	transition: background 100ms linear;
+
+	&:hover {
+		background: var(--gray10);
+	}
+
+	&.is-inactive {
+		color: var(--gray20);
+	}
+
+	&.is-selected {
+		background: var(--blue10);
+		color: var(--white);
+
+		&:hover {
+			background: var(--blue30);
+		}
+	}
+}

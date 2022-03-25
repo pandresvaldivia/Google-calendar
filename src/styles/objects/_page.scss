@@ -6,16 +6,16 @@
 	grid-template-areas:
 		'header    header'
 		'sidebar calendar';
-}
 
-.page .header {
-	grid-area: header;
-}
+	.header {
+		grid-area: header;
+	}
 
-.page .sidebar {
-	grid-area: sidebar;
-}
+	.sidebar {
+		grid-area: sidebar;
+	}
 
-.page .calendar {
-	grid-area: calendar;
+	.calendar {
+		grid-area: calendar;
+	}
 }

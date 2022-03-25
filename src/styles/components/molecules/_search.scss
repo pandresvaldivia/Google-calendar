@@ -1,60 +1,44 @@
 .search {
 	position: relative;
-}
 
-.search::before {
-	display: block;
-	content: '';
-	background: var(--blue10);
-	position: absolute;
-	block-size: 1px;
-	inline-size: 100%;
-	inset-block-end: 0;
-	transform: scaleX(0);
-	transition: transform 0.25s ease-in-out;
-	-webkit-transition: transform 0.25s ease-in-out;
-	-moz-transition: transform 0.25s ease-in-out;
-	-ms-transition: transform 0.25s ease-in-out;
-	-o-transition: transform 0.25s ease-in-out;
-}
+	&::before {
+		display: block;
+		content: '';
+		background: var(--blue10);
+		position: absolute;
+		block-size: 1px;
+		inline-size: 100%;
+		inset-block-end: 0;
+		transform: scaleX(0);
+		transition: transform 0.25s ease-in-out;
+	}
 
-.search.is-focused::before {
-	transform: scale(1);
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-}
+	&.is-focused::before {
+		transform: scale(1);
+	}
 
-.search-input {
-	background: var(--gray10);
-	background-repeat: no-repeat;
-	background-position: left 1rem center;
-	border: none;
-	padding-block: 0.625rem;
-	padding-inline: 1rem;
-	outline: none;
-	border-radius: 0.25rem;
-	-webkit-border-radius: 0.25rem;
-	-moz-border-radius: 0.25rem;
-	-ms-border-radius: 0.25rem;
-	-o-border-radius: 0.25rem;
-	box-sizing: border-box;
-	inline-size: 100%;
-}
+	&-input {
+		background: var(--gray10);
+		background-repeat: no-repeat;
+		background-position: left 1rem center;
+		border: none;
+		padding-block: 0.625rem;
+		padding-inline: 1rem;
+		outline: none;
+		border-radius: 0.25rem;
+		box-sizing: border-box;
+		inline-size: 100%;
 
-.search-input:not(:placeholder-shown) {
-	background-image: none;
-}
+		&:not(:placeholder-shown) {
+			background-image: none;
+		}
 
-.search-input:placeholder-shown {
-	background-image: url('../assets/icons/users.svg');
+		&:placeholder-shown {
+			background-image: url('../assets/icons/users.svg');
+		}
+	}
 }
 
 ::-webkit-input-placeholder {
 	transform: translateX(1.5rem);
-	-webkit-transform: translateX(1.5rem);
-	-moz-transform: translateX(1.5rem);
-	-ms-transform: translateX(1.5rem);
-	-o-transform: translateX(1.5rem);
 }

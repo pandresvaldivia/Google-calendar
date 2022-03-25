@@ -1,0 +1,30 @@
+.miniCalendar {
+	--cellSize: 1.75rem;
+	font: var(--body3-regular);
+	inline-size: 12.25rem;
+
+	&-header {
+		display: grid;
+		place-items: center;
+		grid-template-columns: repeat(7, var(--cellSize));
+		line-height: var(--cellSize);
+		margin-block-start: 0.5rem;
+	}
+
+	&-date {
+		font: var(--body1-medium);
+	}
+
+	&-status {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-inline-start: 0.25rem;
+	}
+
+	&-month {
+		display: grid;
+		grid-template-columns: repeat(7, var(--cellSize));
+		grid-template-rows: repeat(6, var(--cellSize));
+	}
+}

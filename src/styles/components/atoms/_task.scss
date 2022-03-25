@@ -3,10 +3,6 @@
 	padding-block: 0.625rem;
 	padding-inline-start: 1rem;
 	border-radius: 0.25rem;
-	-webkit-border-radius: 0.25rem;
-	-moz-border-radius: 0.25rem;
-	-ms-border-radius: 0.25rem;
-	-o-border-radius: 0.25rem;
 	color: var(--white);
 	position: relative;
 	inset-inline-start: -0.25rem;
@@ -15,9 +11,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
-}
 
-.task p {
-	margin: 0;
-	white-space: nowrap;
+	p {
+		margin: 0;
+		white-space: nowrap;
+	}
 }

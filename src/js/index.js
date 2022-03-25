@@ -1,4 +1,4 @@
-import '../styles/main.scss';
+import '../styles/styles.scss';
 
 import { $searchPeople } from './selectors.js';
 import Search from './search.js';

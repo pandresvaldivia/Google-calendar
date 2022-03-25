@@ -8,66 +8,71 @@
 	border-bottom: 1px solid currentColor;
 	background: var(--white);
 	z-index: 1;
-}
 
-.calendarDay-date {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	text-transform: uppercase;
-}
+	&::before {
+		content: '';
+		inline-size: 1px;
+		block-size: 56px;
+		background: currentColor;
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block-end: 0;
+	}
 
-.calendarDay a {
-	text-decoration: none;
-	color: currentColor;
-	outline: none;
-}
+	&-date {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		text-transform: uppercase;
+	}
 
-.calendarDay span:nth-of-type(1) {
-	font: var(--body1-medium);
-}
+	a {
+		text-decoration: none;
+		color: currentColor;
+		outline: none;
+	}
 
-.calendarDay span:nth-of-type(2) {
-	font: var(--subtitle-subtitle1);
-	inline-size: 2.75rem;
-	line-height: 2.75rem;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-ms-border-radius: 50%;
-	-o-border-radius: 50%;
-}
+	span {
+		&:nth-of-type(1) {
+			font: var(--body1-medium);
+		}
 
-.calendarDay a:focus span:nth-of-type(2),
-.calendarDay a:hover span:nth-of-type(2) {
-	background: var(--gray10);
-}
+		&:nth-of-type(2) {
+			font: var(--subtitle-subtitle1);
+			inline-size: 2.75rem;
+			line-height: 2.75rem;
+			border-radius: 50%;
+		}
+	}
 
-.calendarDay::before {
-	content: '';
-	inline-size: 1px;
-	block-size: 56px;
-	background: currentColor;
-	position: absolute;
-	inset-inline-start: 0;
-	inset-block-end: 0;
-}
+	a:focus,
+	a:hover {
+		span:nth-of-type(2) {
+			background: var(--gray10);
+		}
+	}
 
-.calendarDay.is-selected span:nth-of-type(1) {
-	color: var(--blue10);
-}
+	&.is-selected {
+		span {
+			&:nth-of-type(1) {
+				color: var(--blue10);
+			}
 
-.calendarDay.is-selected span:nth-of-type(2) {
-	background: var(--blue10);
-	color: var(--white);
-}
+			&:nth-of-type(2) {
+				background: var(--blue10);
+				color: var(--white);
+			}
+		}
 
-.calendarDay.is-selected a:hover span:nth-of-type(1),
-.calendarDay.is-selected a:focus span:nth-of-type(1) {
-	color: var(--blue10);
-}
+		a:hover,
+		a:focus {
+			span:nth-of-type(1) {
+				color: var(--blue30);
+			}
 
-.calendarDay.is-selected a:hover span:nth-of-type(2),
-.calendarDay.is-selected a:focus span:nth-of-type(2) {
-	background: var(--blue30);
+			span:nth-of-type(2) {
+				background: var(--blue30);
+			}
+		}
+	}
 }

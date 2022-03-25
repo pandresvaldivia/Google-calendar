@@ -4,19 +4,15 @@
 	position: absolute;
 	inset-inline-start: 0;
 	inset-inline-end: 0;
-}
 
-.currentTime::before {
-	content: '';
-	block-size: 1rem;
-	inline-size: 1rem;
-	background: var(--red10);
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-ms-border-radius: 50%;
-	-o-border-radius: 50%;
-	position: absolute;
-	inset-inline-start: 0;
-	inset-block-end: calc(50% - 0.5rem);
+	&::before {
+		content: '';
+		block-size: 1rem;
+		inline-size: 1rem;
+		background: var(--red10);
+		border-radius: 50%;
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block-end: calc(50% - 0.5rem);
+	}
 }

@@ -30,7 +30,7 @@ export default class Search {
 		} = data;
 
 		const $option = document.createElement('li');
-		$option.classList.add('searchResult-option');
+		$option.classList.add('userOption');
 		$option.role = 'option';
 
 		$option.innerHTML = `
@@ -43,11 +43,11 @@ export default class Search {
 					width="32"
 				/>
 			</div>
-			<div class="searchResult-details">
-				<span class="searchResult-name"
+			<div class="userOption-details">
+				<span class="userOption-name"
 					>${first} ${last}</span
 				>
-				<span class="searchResult-email"
+				<span class="userOption-email"
 					>${email}</span
 				>
 			</div>

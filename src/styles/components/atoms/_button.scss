@@ -15,8 +15,8 @@
 		transform: scale(0.95);
 	}
 
-	.button:hover,
-	.button:focus {
+	&:hover,
+	&:focus {
 		background: var(--gray10);
 	}
 

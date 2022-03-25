@@ -2,8 +2,8 @@
 	display: inline-flex;
 	gap: 1rem;
 	align-items: center;
-}
 
-.calendarStatus-date {
-	font: var(--subtitle-subtitle1);
+	&-date {
+		font: var(--subtitle-subtitle1);
+	}
 }

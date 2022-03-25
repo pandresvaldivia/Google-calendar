@@ -15,24 +15,10 @@
 			display: block;
 		}
 
-		&.is-blue {
-			background: var(--blue10);
-		}
-
-		&.is-green {
-			background: var(--green10);
-		}
-
-		&.is-orange {
-			background: var(--orange);
-		}
-
-		&.is-purple {
-			background: var(--purple);
-		}
-
-		&:after {
-			display: block;
+		@each $modifier, $color in $colors {
+			&.#{$modifier} {
+				background: $color;
+			}
 		}
 	}
 }

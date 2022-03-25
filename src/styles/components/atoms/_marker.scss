@@ -19,19 +19,9 @@
 		transform: rotate(45deg);
 	}
 
-	&.is-blue {
-		border: 0.125rem solid var(--blue10);
-	}
-
-	&.is-green {
-		border: 0.125rem solid var(--green10);
-	}
-
-	&.is-orange {
-		border: 0.125rem solid var(--orange);
-	}
-
-	&.is-purple {
-		border: 0.125rem solid var(--purple);
+	@each $modifier, $color in $colors {
+		&.#{$modifier} {
+			border: 0.125rem solid $color;
+		}
 	}
 }

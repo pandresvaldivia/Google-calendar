@@ -3,14 +3,14 @@
 	justify-content: space-between;
 	align-items: center;
 	padding-inline: 1rem 1.5rem;
-}
 
-.header-block {
-	display: flex;
-	align-items: center;
-	gap: 3rem;
-}
+	&-block {
+		display: flex;
+		align-items: center;
+		gap: 3rem;
+	}
 
-.header-logo img {
-	vertical-align: middle;
+	&-logo img {
+		vertical-align: middle;
+	}
 }

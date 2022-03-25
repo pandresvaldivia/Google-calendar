@@ -3,21 +3,15 @@
 	padding-inline: 0.75rem;
 	padding-inline-end: 2rem;
 	border-radius: 0.25rem;
-	-webkit-border-radius: 0.25rem;
-	-moz-border-radius: 0.25rem;
-	-ms-border-radius: 0.25rem;
-	-o-border-radius: 0.25rem;
 	font: var(--button-button);
-	-webkit-appearance: none;
-	-moz-appearance: none;
 	appearance: none;
 	background: url(../assets/icons/down.svg) no-repeat right center;
 	background-position: right 0.75rem center;
 	outline: none;
 	cursor: pointer;
-}
 
-.select:hover,
-.select:focus {
-	background-color: var(--gray10);
+	&:hover,
+	&:focus {
+		background-color: var(--gray10);
+	}
 }

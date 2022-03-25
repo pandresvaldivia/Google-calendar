@@ -1,0 +1,32 @@
+.userOption {
+	display: flex;
+	padding-inline: 1rem;
+	padding-block: 0.5rem;
+	align-items: center;
+	gap: 0.5rem;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--gray10);
+	}
+
+	&-details {
+		min-width: 0;
+		font: var(--body2-regular);
+
+		span {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	&-name {
+		color: var(--gray50);
+	}
+
+	&-email {
+		color: var(--gray20);
+	}
+}
