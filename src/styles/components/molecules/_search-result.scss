@@ -8,6 +8,7 @@
 	transform-origin: top;
 	transition: transform 0.1s;
 	background: var(--white);
+	z-index: 1;
 
 	&-list {
 		list-style: none;
