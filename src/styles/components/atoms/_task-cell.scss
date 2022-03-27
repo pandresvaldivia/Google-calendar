@@ -3,7 +3,7 @@
 	border-block-end: 1px solid currentColor;
 	padding-block: 0.25rem;
 
-	&is-active::before {
+	&.is-active::before {
 		content: '(Sin título)';
 		font-size: small;
 		background: #039be5;

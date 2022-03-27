@@ -1,0 +1,23 @@
+.modal-container {
+	block-size: 100vh;
+	inline-size: 100vw;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	pointer-events: none;
+}
+
+.modal {
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	inline-size: 28rem;
+	background: var(--white);
+	border-radius: 0.25rem;
+	box-shadow: 0px 24px 38px 3px rgb(0 0 0 / 14%),
+		0px 9px 46px 8px rgb(0 0 0 / 12%), 0px 11px 15px -7px rgb(0 0 0 / 20%);
+}
