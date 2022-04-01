@@ -1,3 +1,4 @@
+import { formatDate } from '../utils/date.js';
 export default class Modal {
 	constructor($root) {
 		this.root = $root;
@@ -33,24 +34,36 @@ export default class Modal {
 				<div>
 					<input type="text" name="title" class="input is-title" placeholder="Agregar título" required />
 				</div>
-				<div>
-					<input type="date" name="date" />
-					<input type="time" name="time-start" />
-					<input type="time" name="time-end" />
+				<div class="modal-input">
+					<i class="icon-clock" aria-hidden="true"></i>
+					<div class="modal-Datetime">
+						<span class="inputDate">
+							<span class="inputDate-value">
+								Martes, 5 de abril de 2022
+							</span>
+							<input id="modal-date" class="inputDate-input" type="date" name="date" />
+						</span>
+						<input id="time-start" class="inputTime" type="time" name="time-start" value="09:00"/>
+						<span aria-label="a">-</span>
+						<input id="time-end" class="inputTime" type="time" name="time-end" value="18:00"/>
+					</div>
 				</div>
-				<div>
+				<div class="modal-input">
+					<i class="icon-users" aria-hidden="true"></i>
 					<input type="text" name="title" class="input is-solid" placeholder="Agregar invitados" />
 				</div>
-				<div>
+				<div class="modal-input">
 					<i class="icon-video" aria-hidden="true"></i>
-					<button class="button is-primary">
+					<button class="button is-primary is-videocall">
 						Agregar una videoconferencia de Google Meet
 					</button>
 				</div>
-				<div>
+				<div class="modal-input">
+					<i class="icon-gps" aria-hidden="true"></i>
 					<input type="text" name="place" class="input is-solid" placeholder="Agregar lugar" />
 				</div>
-				<div>
+				<div class="modal-input">
+					<i class="icon-text" aria-hidden="true"></i>
 					<input type="file" name="file" class="input is-file" />
 				</div>
 				<div class="modal-actions">
@@ -74,6 +87,22 @@ export default class Modal {
 		return position - modalWidth;
 	}
 
+	addDateElements(modal) {
+		this.modalDate = modal.querySelector('#modal-date');
+		this.timeStart = modal.querySelector('#time-start');
+		this.timeEnd = modal.querySelector('#time-end');
+
+		this.addEventListeners();
+	}
+
+	addEventListeners() {
+		this.modalDate.addEventListener('input', () => {
+			const date = formatDate(this.modalDate.value);
+
+			console.log(date);
+		});
+	}
+
 	open(taskCell) {
 		if (document.querySelector('.modal')) return;
 
@@ -82,6 +111,7 @@ export default class Modal {
 		this.root.appendChild($modal);
 		this.modal = $modal;
 		$modal.show();
+		this.addDateElements($modal);
 		this.createModalOverlay();
 	}
 
