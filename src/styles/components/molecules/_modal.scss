@@ -14,10 +14,38 @@
 .modal {
 	box-sizing: border-box;
 	margin: 0;
+	padding-block: 1.5rem;
+	padding-inline: 3rem;
 	border: none;
 	inline-size: 28rem;
 	background: var(--white);
 	border-radius: 0.25rem;
 	box-shadow: 0px 24px 38px 3px rgb(0 0 0 / 14%),
 		0px 9px 46px 8px rgb(0 0 0 / 12%), 0px 11px 15px -7px rgb(0 0 0 / 20%);
+	animation: displaymodal 200ms;
+
+	&-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	&-actions {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 0.25rem;
+	}
+}
+
+@keyframes displaymodal {
+	0% {
+		opacity: 0;
+		transform: translateX(1rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }

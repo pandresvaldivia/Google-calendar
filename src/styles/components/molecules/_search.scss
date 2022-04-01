@@ -36,9 +36,9 @@
 		&:placeholder-shown {
 			background-image: url('../assets/icons/users.svg');
 		}
-	}
-}
 
-::-webkit-input-placeholder {
-	transform: translateX(1.5rem);
+		&::-webkit-input-placeholder {
+			transform: translateX(1.5rem);
+		}
+	}
 }

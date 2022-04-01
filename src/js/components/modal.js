@@ -1,7 +1,10 @@
 export default class Modal {
 	constructor($root) {
 		this.root = $root;
-		this.root.addEventListener('click', (e) => this.toggleModal(e));
+		this.root.addEventListener(
+			'click',
+			(e) => e.target.classList.contains('modal-container') && this.close()
+		);
 
 		const taskCells = document.querySelectorAll('.taskCell');
 
@@ -12,14 +15,52 @@ export default class Modal {
 		}
 	}
 
-	createModal(text, weekday) {
+	createModal(weekday) {
 		const modal = document.createElement('dialog');
 		modal.classList.add('modal');
 		modal.style.marginLeft = `${this.getMargin(weekday)}px`;
-		modal.innerHTML = `
-            <h1>${text}</h1>
-        `;
+		modal.style.opacity = 1;
+		modal.innerHTML = this.getModalTemplate();
+		modal
+			.querySelector('#close-modal')
+			.addEventListener('click', () => this.close());
 		return modal;
+	}
+
+	getModalTemplate() {
+		return `
+			<form class="modal-form">
+				<div>
+					<input type="text" name="title" class="input is-title" placeholder="Agregar título" required />
+				</div>
+				<div>
+					<input type="date" name="date" />
+					<input type="time" name="time-start" />
+					<input type="time" name="time-end" />
+				</div>
+				<div>
+					<input type="text" name="title" class="input is-solid" placeholder="Agregar invitados" />
+				</div>
+				<div>
+					<i class="icon-video" aria-hidden="true"></i>
+					<button class="button is-primary">
+						Agregar una videoconferencia de Google Meet
+					</button>
+				</div>
+				<div>
+					<input type="text" name="place" class="input is-solid" placeholder="Agregar lugar" />
+				</div>
+				<div>
+					<input type="file" name="file" class="input is-file" />
+				</div>
+				<div class="modal-actions">
+					<button id="close-modal" class="button">
+						Cancelar
+					</button>
+					<input type="submit" class="button is-primary" value="Guardar" />
+				</div>
+			</form>
+		`;
 	}
 
 	getMargin(weekDay) {
@@ -30,11 +71,6 @@ export default class Modal {
 			16 + sidebarWidth + timezoneWidth + taskCellWidth * weekDay;
 		const modalWidth = 448;
 
-		console.log(sidebarWidth);
-		console.log(timezoneWidth);
-		console.log(taskCellWidth);
-		console.log(position);
-
 		return position - modalWidth;
 	}
 
@@ -42,22 +78,11 @@ export default class Modal {
 		if (document.querySelector('.modal')) return;
 
 		const weekday = taskCell.dataset.weekday;
-		const $modal = this.createModal('Mi modal', weekday);
+		const $modal = this.createModal(weekday);
 		this.root.appendChild($modal);
 		this.modal = $modal;
 		$modal.show();
-		this.toggleModal();
-	}
-
-	toggleModal(e) {
 		this.createModalOverlay();
-
-		e.preventDefault();
-
-		if (e.target.classList.contains('modal-container')) {
-			this.close();
-			this.removeModalOverlay();
-		}
 	}
 
 	createModalOverlay() {
@@ -69,6 +94,7 @@ export default class Modal {
 	}
 
 	close() {
+		this.removeModalOverlay();
 		this.modal.remove();
 	}
 }

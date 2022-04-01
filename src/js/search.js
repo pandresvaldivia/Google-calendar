@@ -57,7 +57,7 @@ export default class Search {
 	}
 
 	async addOptions() {
-		const { results } = await getUsers();
+		const { results } = await getUsers(4);
 
 		for (const userData of results) {
 			const $option = this.createOption(userData);

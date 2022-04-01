@@ -3,6 +3,7 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	align-self: stretch;
 
 	&-header {
 		font: var(--body1-medium);
