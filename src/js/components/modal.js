@@ -19,7 +19,7 @@ export default class Modal {
 	createModal(weekday) {
 		const modal = document.createElement('dialog');
 		modal.classList.add('modal');
-		if (weekday < 2) modal.classList.add('modal--is-reverse');
+		if (weekday < 2) modal.classList.add('is-reverse');
 		modal.style.marginLeft = `${this.getMargin(weekday)}px`;
 		modal.style.opacity = 1;
 		modal.innerHTML = this.getModalTemplate();
@@ -65,7 +65,10 @@ export default class Modal {
 				</div>
 				<div class="modal-input">
 					<i class="icon-text" aria-hidden="true"></i>
-					<input type="file" name="file" class="input is-file" />
+					<div class="input is-file">
+						<label for="file" class="input-value">Agregar descripción o archivo adjunto</label>
+						<input type="file" name="file" class="input is-hidden" />
+					</div>
 				</div>
 				<div class="modal-actions">
 					<button id="close-modal" class="button">
@@ -94,18 +97,26 @@ export default class Modal {
 	}
 
 	addDateElements(modal) {
-		this.modalDate = modal.querySelector('#modal-date');
-		this.timeStart = modal.querySelector('#time-start');
-		this.timeEnd = modal.querySelector('#time-end');
+		const modalDate = modal.querySelector('#modal-date');
+		const timeStart = modal.querySelector('#time-start');
+		const timeEnd = modal.querySelector('#time-end');
 
-		this.addEventListeners();
-	}
-
-	addEventListeners() {
-		this.modalDate.addEventListener('input', () => {
-			const date = formatDate(this.modalDate.value);
+		modalDate.addEventListener('input', () => {
+			const date = formatDate(modalDate.value);
 
 			console.log(date);
+		});
+	}
+
+	addFileElements(modal) {
+		const fileInput = modal.querySelector('.input.is-file');
+		const fileInputValue = modal.querySelector('.input-value');
+
+		fileInput.addEventListener('change', (e) => {
+			const filename = e.target.files[0].name;
+
+			fileInputValue.classList.add('is-full');
+			fileInputValue.innerText = filename;
 		});
 	}
 
@@ -118,6 +129,7 @@ export default class Modal {
 		this.modal = $modal;
 		$modal.show();
 		this.addDateElements($modal);
+		this.addFileElements($modal);
 		this.createModalOverlay();
 	}
 

@@ -5,6 +5,7 @@
 	box-sizing: border-box;
 	inline-size: 100%;
 	transition: box-shadow 0.2s;
+	position: relative;
 	font: var(--body1-regular);
 
 	&.is-title {
@@ -14,7 +15,7 @@
 
 	&.is-solid,
 	&.is-file {
-		color: var(--gray90);
+		color: var(--gray60);
 		border-radius: 0.25rem;
 		padding-inline: 0.75rem;
 		padding-block: 0.625rem;
@@ -30,14 +31,23 @@
 		border-radius: 0.25rem 0.25rem 0 0;
 	}
 
-	&.is-file {
-		&::before {
-			content: 'Agregar descripción o archivo adjuntos';
-			color: var(--gray20);
-		}
+	&.is-hidden {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		cursor: pointer;
 
 		&::-webkit-file-upload-button {
 			visibility: hidden;
+		}
+	}
+
+	&-value {
+		pointer-events: none;
+		color: var(--gray20);
+
+		&.is-full {
+			color: var(--gray60);
 		}
 	}
 }
