@@ -19,6 +19,7 @@ export default class Modal {
 	createModal(weekday) {
 		const modal = document.createElement('dialog');
 		modal.classList.add('modal');
+		if (weekday < 2) modal.classList.add('modal--is-reverse');
 		modal.style.marginLeft = `${this.getMargin(weekday)}px`;
 		modal.style.opacity = 1;
 		modal.innerHTML = this.getModalTemplate();
@@ -80,8 +81,13 @@ export default class Modal {
 		const sidebarWidth = document.querySelector('.sidebar').offsetWidth;
 		const timezoneWidth = document.querySelector('.timezoneCell').offsetWidth;
 		const taskCellWidth = document.querySelector('.taskCell').offsetWidth;
-		const position =
-			16 + sidebarWidth + timezoneWidth + taskCellWidth * weekDay;
+		const baseWidth = sidebarWidth + timezoneWidth + taskCellWidth * weekDay;
+
+		if (weekDay < 2) {
+			return baseWidth + taskCellWidth + 20;
+		}
+
+		const position = 16 + baseWidth;
 		const modalWidth = 448;
 
 		return position - modalWidth;

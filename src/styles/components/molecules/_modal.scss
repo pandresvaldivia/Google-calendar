@@ -24,6 +24,10 @@
 		0px 9px 46px 8px rgb(0 0 0 / 12%), 0px 11px 15px -7px rgb(0 0 0 / 20%);
 	animation: displaymodal 200ms;
 
+	&--is-reverse {
+		animation: displaymodal-reverse 200ms;
+	}
+
 	&-form {
 		display: flex;
 		flex-direction: column;
@@ -61,6 +65,18 @@
 	0% {
 		opacity: 0;
 		transform: translateX(1rem);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes displaymodal-reverse {
+	0% {
+		opacity: 0;
+		transform: translateX(-1rem);
 	}
 
 	100% {
