@@ -102,7 +102,7 @@ export default class Modal {
 		inputDateValue.innerText = formatDate(Date.now());
 
 		modalDate.addEventListener('input', () => {
-			const date = formatDate(modalDate.value);
+			const date = formatDate(`${modalDate.value}T00:00:00`);
 
 			inputDateValue.innerText = date;
 		});
