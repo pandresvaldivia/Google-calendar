@@ -1,6 +1,6 @@
 import { twoDigitsFormat } from './string.helper';
 
-const date = new Date();
+export const date = new Date();
 
 function getMonthData() {
 	const lastDay = new Date(

@@ -13,6 +13,10 @@
 
 	&-date {
 		font: var(--body1-medium);
+		max-width: 6.5rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	&-status {

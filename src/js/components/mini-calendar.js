@@ -1,5 +1,11 @@
-import { $miniCalendarContent, $miniCalendarHeader } from '../selectors';
 import {
+	$miniCalendarContent,
+	$miniCalendarHeader,
+	$nextMonth,
+	$prevMonth,
+} from '../selectors';
+import {
+	date,
 	getDatetime,
 	getDateTimeMonth,
 	getMonthData,
@@ -9,6 +15,21 @@ import { formatDate } from '../helpers/date.helper';
 import { MONTH_OPTIONS } from '../constants/date';
 import { monthAbreviation } from '../helpers/string.helper';
 
+function printHeaderInfo() {
+	const datetime = getDateTimeMonth(date);
+
+	$miniCalendarHeader.datetime = datetime;
+	$miniCalendarHeader.innerText = monthAbreviation(
+		formatDate(date, MONTH_OPTIONS)
+	);
+}
+
+function createMinicalendar() {
+	printMonth();
+	printHeaderInfo();
+	addControls();
+}
+
 function printMonth() {
 	const { lastDay, firstWeekday } = getMonthData();
 	const lastMonthDay = lastDay + firstWeekday - 1;
@@ -16,8 +37,6 @@ function printMonth() {
 	const nextMonthDay = lastDay + firstWeekday - 1;
 
 	clearElement($miniCalendarContent);
-
-	printHeaderInfo();
 
 	for (let day = 0; day < 42; day++) {
 		if (day < firstWeekday) {
@@ -37,14 +56,19 @@ function printMonth() {
 	}
 }
 
-function printHeaderInfo() {
-	const date = new Date();
-	const datetime = getDateTimeMonth(date);
+function addControls() {
+	$nextMonth.addEventListener('click', () => {
+		console.log('hola');
+		changeMonth($nextMonth);
+		printHeaderInfo();
+		printMonth();
+	});
 
-	$miniCalendarHeader.datetime = datetime;
-	$miniCalendarHeader.innerText = monthAbreviation(
-		formatDate(date, MONTH_OPTIONS)
-	);
+	$prevMonth.addEventListener('click', () => {
+		changeMonth($prevMonth);
+		printHeaderInfo();
+		printMonth();
+	});
 }
 
 function createCell(day, monthType = 'current') {
@@ -73,4 +97,10 @@ function isToday(date) {
 	if (date === currentDate) return true;
 }
 
-export { printMonth };
+function changeMonth({ id }) {
+	id === 'nextMonth'
+		? date.setMonth(date.getMonth() + 1)
+		: date.setMonth(date.getMonth() - 1);
+}
+
+export { createMinicalendar };
