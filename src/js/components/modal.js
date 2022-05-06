@@ -33,7 +33,7 @@ export default class Modal {
 		return `
 			<form class="modal-form">
 				<div>
-					<input type="text" name="title" class="input is-title" placeholder="Agregar título" required />
+					<input type="text" name="title" class="input is-title" placeholder="Agregar título" autocomplete="off" required />
 				</div>
 				<div class="modal-input">
 					<i class="icon-clock" aria-hidden="true"></i>
@@ -49,7 +49,7 @@ export default class Modal {
 				</div>
 				<div class="modal-input">
 					<i class="icon-users" aria-hidden="true"></i>
-					<input type="text" name="title" class="input is-solid" placeholder="Agregar invitados" required />
+					<input type="text" name="title" class="input is-solid" placeholder="Agregar invitados" autocomplete="off" required />
 				</div>
 				<div class="modal-input">
 					<i class="icon-video" aria-hidden="true"></i>
@@ -59,7 +59,7 @@ export default class Modal {
 				</div>
 				<div class="modal-input">
 					<i class="icon-gps" aria-hidden="true"></i>
-					<input type="text" name="place" class="input is-solid" placeholder="Agregar lugar" required />
+					<input type="text" name="place" class="input is-solid" placeholder="Agregar lugar" autocomplete="off" required />
 				</div>
 				<div class="modal-input">
 					<i class="icon-text" aria-hidden="true"></i>
