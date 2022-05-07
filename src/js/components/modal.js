@@ -6,14 +6,6 @@ export default class Modal {
 			'click',
 			(e) => e.target.classList.contains('modal-container') && this.close()
 		);
-
-		const taskCells = document.querySelectorAll('.taskCell');
-
-		for (const taskCell of taskCells) {
-			taskCell.addEventListener('click', () => {
-				this.open(taskCell);
-			});
-		}
 	}
 
 	createModal(weekday) {

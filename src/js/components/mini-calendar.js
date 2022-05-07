@@ -11,9 +11,15 @@ import {
 	getMonthData,
 	getPreviousMonthData,
 } from '../helpers/calendar.helper';
-import { formatDate } from '../helpers/date.helper';
+import { formatDate, isToday } from '../helpers/date.helper';
 import { MONTH_OPTIONS } from '../constants/date';
 import { monthAbreviation } from '../helpers/string.helper';
+
+function createMinicalendar() {
+	printMonth();
+	printHeaderInfo();
+	addControls();
+}
 
 function printHeaderInfo() {
 	const datetime = getDateTimeMonth(date);
@@ -22,12 +28,6 @@ function printHeaderInfo() {
 	$miniCalendarHeader.innerText = monthAbreviation(
 		formatDate(date, MONTH_OPTIONS)
 	);
-}
-
-function createMinicalendar() {
-	printMonth();
-	printHeaderInfo();
-	addControls();
 }
 
 function printMonth() {
@@ -89,12 +89,6 @@ function clearElement($element) {
 	while ($element.firstElementChild) {
 		$element.firstElementChild.remove();
 	}
-}
-
-function isToday(date) {
-	const currentDate = `${new Date().toLocaleDateString('en-CA')}T00:00:00`;
-
-	if (date === currentDate) return true;
 }
 
 function changeMonth({ id }) {

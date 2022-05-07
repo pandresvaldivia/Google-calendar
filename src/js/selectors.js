@@ -8,3 +8,5 @@ export const $miniCalendarContent = document.querySelector(
 export const $miniCalendarHeader = document.querySelector('.miniCalendar-date');
 export const $nextMonth = document.querySelector('#nextMonth');
 export const $prevMonth = document.querySelector('#prevMonth');
+export const $calendarHeader = document.querySelector('.calendar-header');
+export const $calendarWeek = document.querySelector('.calendar-week');

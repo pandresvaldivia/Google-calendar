@@ -24,7 +24,7 @@
 		display: grid;
 		grid-template-columns: var(--grid-calendar-columns);
 		grid-template-rows: repeat(
-			25,
+			24,
 			minmax(var(--min-block-size), var(--max-block-size))
 		);
 		min-inline-size: 43.75rem;

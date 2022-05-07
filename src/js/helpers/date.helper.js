@@ -11,4 +11,10 @@ function formatDateToNum(date) {
 	return date.toLocaleDateString('en-CA');
 }
 
-export { formatDate, formatDateToNum };
+function isToday(date) {
+	const currentDate = `${new Date().toLocaleDateString('en-CA')}T00:00:00`;
+
+	if (date === currentDate) return true;
+}
+
+export { formatDate, formatDateToNum, isToday };
