@@ -1,7 +1,17 @@
 import { WEEK_DAYS } from '../constants/calendar';
-import { date, getWeekDatetime } from '../helpers/calendar-week.helper';
+import {
+	date,
+	getLastDayPrevMonth,
+	getWeekDatetime,
+} from '../helpers/calendar-week.helper';
 import { isToday } from '../helpers/date.helper';
-import { $calendarHeader, $calendarWeek, $modalContainer } from '../selectors';
+import {
+	$calendarHeader,
+	$calendarWeek,
+	$modalContainer,
+	$nextWeek,
+	$prevWeek,
+} from '../selectors';
 import Modal from './modal';
 
 const modal = new Modal($modalContainer);
@@ -9,6 +19,7 @@ const modal = new Modal($modalContainer);
 function createWeekCalendar() {
 	printHeaderInfo();
 	printWeekCells();
+	addControls();
 }
 
 function printHeaderInfo() {
@@ -16,11 +27,27 @@ function printHeaderInfo() {
 	const monthDay = date.getDate();
 	const firstWeekDay = monthDay - weekDay;
 
+	clearHeader();
+
 	createTimeZone('GMT-05');
 
 	for (let day = 0; day < 7; day++) {
-		const dayNumber = firstWeekDay + day;
+		let dayNumber = firstWeekDay + day;
+
+		if (dayNumber <= 0) {
+			dayNumber = getLastDayPrevMonth() + dayNumber;
+			createCalendarDay(dayNumber, day, 'PREV');
+
+			continue;
+		}
+
 		createCalendarDay(dayNumber, day);
+	}
+}
+
+function clearHeader() {
+	while ($calendarHeader.firstChild) {
+		$calendarHeader.firstChild.remove();
 	}
 }
 
@@ -32,8 +59,8 @@ function createTimeZone(timezone) {
 	$calendarHeader.appendChild($timeZone);
 }
 
-function createCalendarDay(monthDay, weekDay) {
-	const datetime = getWeekDatetime(monthDay);
+function createCalendarDay(monthDay, weekDay, monthType = 'CURRENT') {
+	const datetime = getWeekDatetime(monthDay, monthType);
 
 	const $calendarDay = document.createElement('h2');
 	$calendarDay.classList.add('calendarDay');
@@ -88,6 +115,22 @@ function createTaskCell(weekday) {
 	});
 
 	$calendarWeek.appendChild($taskCell);
+}
+
+function addControls() {
+	$nextWeek.addEventListener('click', () => {
+		const nextDate = date.getDate() + 7;
+		date.setDate(nextDate);
+
+		printHeaderInfo();
+	});
+
+	$prevWeek.addEventListener('click', () => {
+		const nextDate = date.getDate() - 7;
+		date.setDate(nextDate);
+
+		printHeaderInfo();
+	});
 }
 
 {

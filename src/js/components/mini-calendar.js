@@ -58,7 +58,6 @@ function printMonth() {
 
 function addControls() {
 	$nextMonth.addEventListener('click', () => {
-		console.log('hola');
 		changeMonth($nextMonth);
 		printHeaderInfo();
 		printMonth();

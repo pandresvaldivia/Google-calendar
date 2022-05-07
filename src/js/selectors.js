@@ -10,3 +10,5 @@ export const $nextMonth = document.querySelector('#nextMonth');
 export const $prevMonth = document.querySelector('#prevMonth');
 export const $calendarHeader = document.querySelector('.calendar-header');
 export const $calendarWeek = document.querySelector('.calendar-week');
+export const $nextWeek = document.querySelector('#nextWeek');
+export const $prevWeek = document.querySelector('#prevWeek');
