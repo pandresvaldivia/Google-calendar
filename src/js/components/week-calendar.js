@@ -1,6 +1,7 @@
 import { WEEK_DAYS } from '../constants/calendar';
 import {
 	date,
+	getDatetimeHour,
 	getLastDay,
 	getLastDayPrevMonth,
 	getWeekDatetime,
@@ -16,11 +17,17 @@ import {
 import Modal from './modal';
 
 const modal = new Modal($modalContainer);
+let weekdaysDatetime = [];
 
 function createWeekCalendar() {
+	printCalendar();
+	addControls();
+}
+
+function printCalendar() {
+	clearCalendar();
 	printHeaderInfo();
 	printWeekCells();
-	addControls();
 }
 
 function printHeaderInfo() {
@@ -28,8 +35,7 @@ function printHeaderInfo() {
 	const monthDay = date.getDate();
 	const lastDay = getLastDay();
 	const firstWeekDay = monthDay - weekDay;
-
-	clearHeader();
+	weekdaysDatetime = [];
 
 	createTimeZone('GMT-05');
 
@@ -44,7 +50,9 @@ function printHeaderInfo() {
 		}
 
 		if (dayNumber > lastDay) {
-			createCalendarDay(dayNumber - lastDay, day, 'NEXT');
+			dayNumber -= lastDay;
+			createCalendarDay(dayNumber, day, 'NEXT');
+
 			continue;
 		}
 
@@ -52,9 +60,20 @@ function printHeaderInfo() {
 	}
 }
 
+function clearCalendar() {
+	clearHeader();
+	clearTaskCells();
+}
+
 function clearHeader() {
 	while ($calendarHeader.firstChild) {
 		$calendarHeader.firstChild.remove();
+	}
+}
+
+function clearTaskCells() {
+	while ($calendarWeek.firstChild) {
+		$calendarWeek.firstChild.remove();
 	}
 }
 
@@ -68,6 +87,7 @@ function createTimeZone(timezone) {
 
 function createCalendarDay(monthDay, weekDay, monthType = 'CURRENT') {
 	const datetime = getWeekDatetime(monthDay, monthType);
+	weekdaysDatetime.push(datetime);
 
 	const $calendarDay = document.createElement('h2');
 	$calendarDay.classList.add('calendarDay');
@@ -78,7 +98,7 @@ function createCalendarDay(monthDay, weekDay, monthType = 'CURRENT') {
         <a href="#" aria-label="24 de abril del 2021">
             <time class="calendarDay-date" datetime="${datetime}">
                 <span>${WEEK_DAYS[weekDay]}</span>
-                <span>${monthDay}</span>
+                <span class="calendarDay-weekday">${monthDay}</span>
             </time>
         </a>
     `;
@@ -99,7 +119,7 @@ function printWeekCells() {
 			continue;
 		}
 
-		createTaskCell(cellPosition);
+		createTaskCell(cellPosition, hour);
 	}
 }
 
@@ -113,10 +133,11 @@ function createHourCell(hour) {
 	$calendarWeek.appendChild($hourCell);
 }
 
-function createTaskCell(weekday) {
+function createTaskCell(weekday, hour) {
 	const $taskCell = document.createElement('div');
 	$taskCell.classList.add('taskCell');
 	$taskCell.dataset.weekday = weekday;
+	$taskCell.dataset.datetime = getDatetimeHour(weekdaysDatetime[weekday], hour);
 	$taskCell.addEventListener('click', () => {
 		modal.open($taskCell);
 	});
@@ -129,14 +150,14 @@ function addControls() {
 		const nextDate = date.getDate() + 7;
 		date.setDate(nextDate);
 
-		printHeaderInfo();
+		printCalendar();
 	});
 
 	$prevWeek.addEventListener('click', () => {
 		const nextDate = date.getDate() - 7;
 		date.setDate(nextDate);
 
-		printHeaderInfo();
+		printCalendar();
 	});
 }
 

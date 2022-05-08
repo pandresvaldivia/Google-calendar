@@ -4,12 +4,7 @@ export const date = new Date();
 
 function getWeekDatetime(day, monthType) {
 	const year = date.getFullYear();
-	let month =
-		monthType === 'CURRENT'
-			? date.getMonth() + 1
-			: monthType === 'PREV'
-			? date.getMonth()
-			: date.getMonth() + 2;
+	let month = getPropertyMonth(monthType);
 	month = twoDigitsFormat(month);
 	day = twoDigitsFormat(day);
 
@@ -32,4 +27,22 @@ function getLastDay() {
 	return lastDay;
 }
 
-export { getWeekDatetime, getLastDayPrevMonth, getLastDay };
+function getDatetimeHour(datetime, hour) {
+	hour = hour == 24 ? 0 : hour;
+	hour = twoDigitsFormat(hour);
+
+	return datetime.replace('00', hour);
+}
+
+function getPropertyMonth(monthType) {
+	const month =
+		monthType === 'CURRENT'
+			? date.getMonth() + 1
+			: monthType === 'PREV'
+			? date.getMonth()
+			: date.getMonth() + 2;
+
+	return month;
+}
+
+export { getWeekDatetime, getLastDayPrevMonth, getLastDay, getDatetimeHour };
