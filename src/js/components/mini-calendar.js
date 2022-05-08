@@ -10,6 +10,7 @@ import {
 	getDateTimeMonth,
 	getMonthData,
 	getPreviousMonthData,
+	resetDate,
 } from '../helpers/calendar.helper';
 import { formatDate, isToday } from '../helpers/date.helper';
 import { MONTH_OPTIONS } from '../constants/date';
@@ -96,4 +97,10 @@ function changeMonth({ id }) {
 		: date.setMonth(date.getMonth() - 1);
 }
 
-export { createMinicalendar };
+function resetMinicalendar() {
+	resetDate();
+	printHeaderInfo();
+	printMonth();
+}
+
+export { createMinicalendar, resetMinicalendar };

@@ -12,3 +12,4 @@ export const $calendarHeader = document.querySelector('.calendar-header');
 export const $calendarWeek = document.querySelector('.calendar-week');
 export const $nextWeek = document.querySelector('#nextWeek');
 export const $prevWeek = document.querySelector('#prevWeek');
+export const $todayBtn = document.querySelector('#today');

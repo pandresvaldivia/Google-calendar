@@ -1,6 +1,6 @@
 import { twoDigitsFormat } from './string.helper';
 
-export const date = new Date();
+export let date = new Date();
 
 function getWeekDatetime(day, monthType) {
 	const year = date.getFullYear();
@@ -45,4 +45,14 @@ function getPropertyMonth(monthType) {
 	return month;
 }
 
-export { getWeekDatetime, getLastDayPrevMonth, getLastDay, getDatetimeHour };
+function resetDate() {
+	date = new Date();
+}
+
+export {
+	getWeekDatetime,
+	getLastDayPrevMonth,
+	getLastDay,
+	getDatetimeHour,
+	resetDate,
+};

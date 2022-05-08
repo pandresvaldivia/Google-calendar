@@ -5,6 +5,7 @@ import {
 	getLastDay,
 	getLastDayPrevMonth,
 	getWeekDatetime,
+	resetDate,
 } from '../helpers/calendar-week.helper';
 import { isToday } from '../helpers/date.helper';
 import {
@@ -145,6 +146,11 @@ function createTaskCell(weekday, hour) {
 	$calendarWeek.appendChild($taskCell);
 }
 
+function resetWeekCalendar() {
+	resetDate();
+	printCalendar();
+}
+
 function addControls() {
 	$nextWeek.addEventListener('click', () => {
 		const nextDate = date.getDate() + 7;
@@ -170,4 +176,4 @@ function addControls() {
 </div>; */
 }
 
-export { createWeekCalendar };
+export { createWeekCalendar, resetWeekCalendar };

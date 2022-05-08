@@ -1,17 +1,28 @@
 import '../styles/styles.scss';
 
-import { $searchPeople, $calendarStatus } from './selectors.js';
+import { $searchPeople, $calendarStatus, $todayBtn } from './selectors.js';
 import Search from './search.js';
-import { SHORT_OPTIONS } from './constants/date';
+import { DEFAULT_OPTIONS, SHORT_OPTIONS } from './constants/date';
 import { formatDate } from './helpers/date.helper';
-import { createMinicalendar } from './components/mini-calendar';
-import { createWeekCalendar } from './components/week-calendar';
+import {
+	createMinicalendar,
+	resetMinicalendar,
+} from './components/mini-calendar';
+import {
+	createWeekCalendar,
+	resetWeekCalendar,
+} from './components/week-calendar';
 
 new Search($searchPeople);
 
 const currentDate = formatDate(new Date(), SHORT_OPTIONS);
 
 $calendarStatus.innerText = currentDate;
+$todayBtn.title = formatDate(new Date(), DEFAULT_OPTIONS);
+$todayBtn.addEventListener('click', () => {
+	resetMinicalendar();
+	resetWeekCalendar();
+});
 
 createMinicalendar();
 createWeekCalendar();
