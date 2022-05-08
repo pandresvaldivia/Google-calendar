@@ -1,6 +1,7 @@
 import { WEEK_DAYS } from '../constants/calendar';
 import {
 	date,
+	getLastDay,
 	getLastDayPrevMonth,
 	getWeekDatetime,
 } from '../helpers/calendar-week.helper';
@@ -25,6 +26,7 @@ function createWeekCalendar() {
 function printHeaderInfo() {
 	const weekDay = date.getDay();
 	const monthDay = date.getDate();
+	const lastDay = getLastDay();
 	const firstWeekDay = monthDay - weekDay;
 
 	clearHeader();
@@ -38,6 +40,11 @@ function printHeaderInfo() {
 			dayNumber = getLastDayPrevMonth() + dayNumber;
 			createCalendarDay(dayNumber, day, 'PREV');
 
+			continue;
+		}
+
+		if (dayNumber > lastDay) {
+			createCalendarDay(dayNumber - lastDay, day, 'NEXT');
 			continue;
 		}
 
