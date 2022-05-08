@@ -5,6 +5,7 @@ import {
 	getLastDay,
 	getLastDayPrevMonth,
 	getWeekDatetime,
+	isCurrentTime,
 	resetDate,
 } from '../helpers/calendar-week.helper';
 import { isToday } from '../helpers/date.helper';
@@ -15,6 +16,7 @@ import {
 	$nextWeek,
 	$prevWeek,
 } from '../selectors';
+import { createTimeIndicator } from './current-time';
 import Modal from './modal';
 
 const modal = new Modal($modalContainer);
@@ -95,7 +97,6 @@ function createCalendarDay(monthDay, weekDay, monthType = 'CURRENT') {
 	if (isToday(datetime)) $calendarDay.classList.add('is-selected');
 
 	$calendarDay.innerHTML = `
-        <div class="currentTime"></div>
         <a href="#" aria-label="24 de abril del 2021">
             <time class="calendarDay-date" datetime="${datetime}">
                 <span>${WEEK_DAYS[weekDay]}</span>
@@ -136,12 +137,15 @@ function createHourCell(hour) {
 
 function createTaskCell(weekday, hour) {
 	const $taskCell = document.createElement('div');
+	const datetime = getDatetimeHour(weekdaysDatetime[weekday], hour);
 	$taskCell.classList.add('taskCell');
 	$taskCell.dataset.weekday = weekday;
-	$taskCell.dataset.datetime = getDatetimeHour(weekdaysDatetime[weekday], hour);
+	$taskCell.dataset.datetime = datetime;
 	$taskCell.addEventListener('click', () => {
 		modal.open($taskCell);
 	});
+
+	if (isCurrentTime(datetime)) $taskCell.appendChild(createTimeIndicator());
 
 	$calendarWeek.appendChild($taskCell);
 }

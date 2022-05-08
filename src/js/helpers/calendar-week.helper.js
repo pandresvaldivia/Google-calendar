@@ -28,8 +28,7 @@ function getLastDay() {
 }
 
 function getDatetimeHour(datetime, hour) {
-	hour = hour == 24 ? 0 : hour;
-	hour = twoDigitsFormat(hour);
+	hour = twoDigitsFormat(hour - 1);
 
 	return datetime.replace('00', hour);
 }
@@ -45,6 +44,14 @@ function getPropertyMonth(monthType) {
 	return month;
 }
 
+function isCurrentTime(date) {
+	const now = new Date();
+	const hour = twoDigitsFormat(now.getHours());
+	const currentTime = `${now.toLocaleDateString('en-CA')}T${hour}:00:00`;
+
+	if (date === currentTime) return true;
+}
+
 function resetDate() {
 	date = new Date();
 }
@@ -55,4 +62,5 @@ export {
 	getLastDay,
 	getDatetimeHour,
 	resetDate,
+	isCurrentTime,
 };
