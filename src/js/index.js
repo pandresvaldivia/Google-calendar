@@ -12,6 +12,7 @@ import {
 	createWeekCalendar,
 	resetWeekCalendar,
 } from './components/week-calendar';
+import { setFavicon, setLogo } from './components/logo';
 
 new Search($searchPeople);
 
@@ -26,3 +27,5 @@ $todayBtn.addEventListener('click', () => {
 
 createMinicalendar();
 createWeekCalendar();
+setLogo();
+setFavicon();

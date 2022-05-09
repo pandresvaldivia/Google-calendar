@@ -13,3 +13,5 @@ export const $calendarWeek = document.querySelector('.calendar-week');
 export const $nextWeek = document.querySelector('#nextWeek');
 export const $prevWeek = document.querySelector('#prevWeek');
 export const $todayBtn = document.querySelector('#today');
+export const $logo = document.querySelector('#logo');
+export const $favicon = document.querySelector('#favicon');
